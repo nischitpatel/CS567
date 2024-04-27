@@ -547,4 +547,6 @@ void deleteList(Node *myList)
         myList = myList->next;
         free(temp);
     }
+
+    free (myList);
 }
