@@ -1,64 +1,95 @@
 /*
-    By: Nischit Patel
+    Author: Nischit Bipinbhai Patel
+    Course: INF503 Large Scale Data Structures
+    NAU ID #: 6293990
 */
 
-/* Pre-processors*/
-#include "search_lib.h"
-#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include "prefix_trie.h"
+#include "genome_processing.h"
+#include "my_strings.h"
 
-const char *inputFileName = "myData_CS599.csv";
-const char *outputFileName = "sorted_data.csv";
+/*
+    argv[1] - path to genome file
+    argv[2] - number of queries 5000/50000/100000/1000000
+    argv[3] - length of subject 50000
+    argv[4] - error flag 0/1
+*/
 
-/* Main block */
-int main()
+int main(int argc, char *argv[])
 {
-    /* Variable declaration */
-    Node *list = NULL, *all_occurrences;
-    int occurrences, index, index_2, length;
-    dtype element;
-    dtype values[] = {232, 649, 989, 1447, 1909};
+    srand(time(NULL));
 
-    length = sizeof(values) / sizeof(dtype);
+    char *genome_file_path = argv[1];
+    long long query_count = atoll(argv[2]);
+    long random_subject_length = atoll(argv[3]); 
+    int flag_error = atoi(argv[4]);
 
-    /* Get the data from a file */
-    list = getData(inputFileName);
-
-    /* Sort the data */
-    list = sortData(list);
-
-    /* Demonstarting first, last and all occurrences of 232, 649, 989, 1447, and 1909*/
-    for (index = 0; index < length; index++)
+    cout << "--------------------------------------------------" << endl;
+    if(!flag_error)
+        cout << "           PART A : BASIC PREFIX TRIE" << endl;
+    else
+        cout << "      PART B : IMPACT OF ERROR RATE ON TRIE" << endl;
+    cout << "--------------------------------------------------" << endl << endl;
+    cout << "Query count: " << query_count << endl;
+    // Read genome file
+    ifstream genome_file_ptr(genome_file_path);
+    if (!genome_file_ptr.is_open())
     {
-        element = values[index];
-        occurrences = getFirstOccurrence(element, list);
-        if (occurrences != NOT_FOUND)
-        {
-            printf("\nFirst occurrence of " SPECIFIER " is found at index %d", element, occurrences);
-
-            occurrences = getLastOccurrence(element, list);
-            printf("\nLast occurrence of " SPECIFIER " is found at index %d", element, occurrences);
-
-            all_occurrences = getAllOccurrencesRet(element, list, &occurrences);
-            printf("\nWe have found %d occurrences of " SPECIFIER " at indexes ", occurrences, element);
-            printf("%d", all_occurrences->index);
-            for (index_2 = 0; index_2 < occurrences - 1; index_2++)
-            {
-                all_occurrences = all_occurrences->next;
-                printf(", %d", all_occurrences->index);
-            }
-        }
-        else
-        {
-            printf("\n" SPECIFIER " is not present in a linked list", element);
-        }
-        printf("\n");
+        cout << "Error: Unable to open genome file" << endl;
+        return 0;
     }
-    /* Printing a new line for cleanliness */
-    printf("\n");
 
-    /* Delete a list */
-    deleteList(list);
+    // instance of genome_processing class
+    GENOMEPROCESSING genome_processor;
 
-    /* Return success */
+    cout << "Reading genome file..." << endl;
+    genome_processor.readHumanGenome(genome_file_ptr);
+
+    long long genome_length = genome_processor.getGenomeSize();
+
+    char *genome = genome_processor.getGenomeData();
+
+    char* random_subject = new char[random_subject_length];
+
+    // Generate random subject
+    long long start_index = rand() % (genome_length - random_subject_length);
+    for (long long i = 0; i < random_subject_length; i++)
+    {
+        random_subject[i] = genome[start_index + i];
+        // random_subject[i] = genome[i];
+    }
+
+    // instance of prefix_trie class
+    Prefix_Trie prefix_trie;
+
+    // Build prefix trie
+    prefix_trie.buildPrefixTrie(random_subject, random_subject_length, query_count, flag_error);
+
+    // Search each possible 36-mer of random subject in the prefix trie
+    long long hits=0;
+    char *query = new char[36 + 1];
+    for(long long i = 0; i < random_subject_length - 36 + 1; i++)
+    {
+        // Read 36-mer query
+        for(long long j = 0; j < 36; j++)
+        {
+            query[j] = random_subject[i + j];
+        }
+        query[36] = '\0';
+
+        // Search query in the prefix trie
+        hits += prefix_trie.search(query);
+    }
+
+    cout << "Hits: " << hits << endl << endl;
+
+    cout << "##############################################################################" << endl << endl;
+
+    delete[] query;
+    delete[] random_subject;
+
     return 0;
 }
