@@ -30,11 +30,11 @@ TEST(LinkedList, DeleteNode) {
     list.addNode(3);
 
     // Delete a node from the list
-    list.deleteNode(2);
+    list.deleteNode(2, list.getHead());
 
     // Check if the node was deleted
     ASSERT(list.length() == 2);
-    ASSERT_FALSE(list.search(2));
+    ASSERT_FALSE(list.binarySearch(2));
 }
 
 TEST(LinkedList, ReverseLinkedList) {
@@ -66,7 +66,7 @@ TEST(LinkedList, FindMiddleNode) {
     list.addNode(5);
 
     // Find the middle node
-    Node* middleNode = list.findMiddleNode();
+    Node* middleNode = list.findMiddleNode(list.getHead());
 
     // Check if the middle node is correct
     ASSERT(middleNode->data == 3);
@@ -87,7 +87,7 @@ TEST(LinkedList, SortLinkedList) {
 
     // Check if the list is sorted
     Node* current = list.getHead();
-    while (current->next != nullptr) {
+    while (current && current->next != nullptr) {
         ASSERT(current->data <= current->next->data);
         current = current->next;
     }
@@ -112,10 +112,10 @@ TEST(LinkedList, BinarySearch) {
     // Check if the key was found
     if (found) {
         // If the key was found, it should be present in the list
-        ASSERT(list.search(key));
+        ASSERT(list.binarySearch(key));
     } else {
         // If the key was not found, it should not be present in the list
-        ASSERT_FALSE(list.search(key));
+        ASSERT_FALSE(list.binarySearch(key));
     }
 }
 
@@ -129,6 +129,9 @@ TEST(LinkedList, GetNthNode) {
         list.addNode(value);
     }
 
+    // Remove duplicates
+    list.removeDuplicates();
+
     // Choose a random index
     int index = DeepState_IntInRange(0, MAX_LENGTH - 1);
 
@@ -138,7 +141,7 @@ TEST(LinkedList, GetNthNode) {
     // Check if the node exists
     if (nthNode != nullptr) {
         // If the node exists, its index should match the specified index
-        ASSERT(list.getIndex(nthNode) == index);
+        ASSERT(list.getNthNodeIndex(nthNode) == index);
     } else {
         // If the node does not exist, the index should be out of bounds
         ASSERT(index >= list.length() || index < 0);
@@ -244,7 +247,7 @@ TEST(LinkedList, HasLoop) {
 
     // Create a loop in the list
     Node* tail = list.getTail();
-    Node* middleNode = list.findMiddleNode();
+    Node* middleNode = list.findMiddleNode(list.getHead());
     if (tail != nullptr && middleNode != nullptr) {
         tail->next = middleNode;
         ASSERT(list.hasLoop());

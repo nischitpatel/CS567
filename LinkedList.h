@@ -19,6 +19,7 @@ public:
     ~LinkedList();
     Node* getHead();
     Node* getTail();
+    int length();
     void addNode(int value);
     void deleteNode(int value, Node* head);
     void reverseLinkedList();
@@ -37,6 +38,8 @@ public:
     void removeDuplicates();
     Node* swapPairs(Node* head);
     Node* rotateRight(Node* head, int k);
+    int getNthNodeIndex(Node* nthnode);
+    int getIndexFromEnd(Node* nthFromEnd);
 };
 
 #endif // LINKEDLIST_H

@@ -44,6 +44,56 @@ Node* LinkedList::getTail() {
 }
 
 /*
+    Function to get the length of the linked list.
+    Input: none
+    Output: length of the linked list.
+    Time complexity: O(n)
+    Space complexity: O(1)
+*/
+int LinkedList::length() {
+    int length = 0;
+    Node* temp = head;
+    while (temp != nullptr) {
+        length++;
+        temp = temp->next;
+    }
+    return length;
+}
+
+/*
+    Function to get the index of the nth node in the linked list.
+    Input: pointer to the nth node.
+    Output: index of the nth node.
+    Time complexity: O(n)
+    Space complexity: O(1)
+*/
+int LinkedList::getNthNodeIndex(Node* nthnode) {
+    Node* temp = head;
+    int index = 0;
+    while (temp != nullptr) {
+        if (temp == nthnode) {
+            return index;
+        }
+        index++;
+        temp = temp->next;
+    }
+    return -1;
+}
+
+int LinkedList::getIndexFromEnd(Node* nthFromEnd) {
+    Node* temp = head;
+    int index = 0;
+    while (temp != nullptr) {
+        if (temp == nthFromEnd) {
+            return index;
+        }
+        index++;
+        temp = temp->next;
+    }
+    return -1;
+}
+
+/*
     Function to add a new node to the end of the linked list.
     Input: integer value to be added to the linked list.
     Output: none
