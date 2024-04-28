@@ -21,7 +21,7 @@ public:
     Node* getTail();
     int length();
     void addNode(int value);
-    void deleteNode(int value, Node* head);
+    void deleteNode(int value);
     void reverseLinkedList();
     Node* findMiddleNode(Node* head);
     void deleteLinkedList();

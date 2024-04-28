@@ -33,7 +33,7 @@ TEST(LinkedList, DeleteNode) {
 
     int initialLength = list.length();
     int valueToDelete = list.getNthNode(DeepState_IntInRange(0, initialLength - 1))->data;
-    list.deleteNode(valueToDelete, list.getHead());
+    list.deleteNode(valueToDelete);
 
     ASSERT_FALSE(list.binarySearch(valueToDelete));
     ASSERT_EQ(list.length(), initialLength - 1);

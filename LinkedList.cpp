@@ -16,25 +16,10 @@ LinkedList::~LinkedList() {
     deleteLinkedList();
 }
 
-/*
-    Function to get the head of the linked list.
-    Input: none
-    Output: head of the linked list.
-    Time complexity: O(1)
-    Space complexity: O(1)
-
-*/
 Node* LinkedList::getHead() {
     return head;
 }
 
-/*
-    Function to get the tail of the linked list.
-    Input: none
-    Output: tail of the linked list.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 Node* LinkedList::getTail() {
     Node* temp = head;
     while (temp != nullptr && temp->next != nullptr) {
@@ -43,13 +28,6 @@ Node* LinkedList::getTail() {
     return temp;
 }
 
-/*
-    Function to get the length of the linked list.
-    Input: none
-    Output: length of the linked list.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 int LinkedList::length() {
     int length = 0;
     Node* temp = head;
@@ -60,13 +38,6 @@ int LinkedList::length() {
     return length;
 }
 
-/*
-    Function to get the index of the nth node in the linked list.
-    Input: pointer to the nth node.
-    Output: index of the nth node.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 int LinkedList::getNthNodeIndex(Node* nthnode) {
     Node* temp = head;
     int index = 0;
@@ -93,13 +64,6 @@ int LinkedList::getIndexFromEnd(Node* nthFromEnd) {
     return -1;
 }
 
-/*
-    Function to add a new node to the end of the linked list.
-    Input: integer value to be added to the linked list.
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 void LinkedList::addNode(int value) {
     Node* newNode = new Node(value);
     if (head == nullptr) {
@@ -113,14 +77,7 @@ void LinkedList::addNode(int value) {
     }
 }
 
-/*
-    Function to delete a node from the linked list.
-    Input: integer value to be deleted from the linked list.
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
-void LinkedList::deleteNode(int value, Node* head) {
+void LinkedList::deleteNode(int value) {
     if (head == nullptr)
         return;
 
@@ -143,13 +100,6 @@ void LinkedList::deleteNode(int value, Node* head) {
     }
 }
 
-/*
-    Function to reverse the linked list.
-    Input: none
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 void LinkedList::reverseLinkedList() {
     Node* prev = nullptr;
     Node* current = head;
@@ -163,13 +113,6 @@ void LinkedList::reverseLinkedList() {
     head = prev;
 }
 
-/*
-    Function to find the middle node of the linked list.
-    Input: head of the linked list.
-    Output: middle node of the linked list.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 Node* LinkedList::findMiddleNode(Node* head) {
     if (head == nullptr || head->next == nullptr)
         return head;
@@ -183,13 +126,6 @@ Node* LinkedList::findMiddleNode(Node* head) {
     return slow;
 }
 
-/*
-    Function to delete the linked list.
-    Input: none
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 void LinkedList::deleteLinkedList() {
     Node* current = head;
     Node* next;
@@ -201,13 +137,6 @@ void LinkedList::deleteLinkedList() {
     head = nullptr;
 }
 
-/*
-    Function to print the linked list.
-    Input: none
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 void LinkedList::printLinkedList() {
     Node* temp = head;
     while (temp != nullptr) {
@@ -217,14 +146,6 @@ void LinkedList::printLinkedList() {
     cout << endl;
 }
 
-/*
-    Function to merge two sorted linked lists.
-    Input: heads of two sorted linked lists.
-    Output: head of the merged sorted linked list.
-    Time complexity: O(n)
-    Space complexity: O(1)
-
-*/
 Node* LinkedList::merge(Node* left, Node* right) {
     Node* result = nullptr;
     if (left == nullptr)
@@ -242,13 +163,6 @@ Node* LinkedList::merge(Node* left, Node* right) {
     return result;
 }
 
-/*
-    Function to perform merge sort on the linked list.
-    Input: head of the linked list.
-    Output: head of the sorted linked list.
-    Time complexity: O(n log n)
-    Space complexity: O(log n)
-*/
 Node* LinkedList::mergeSort(Node* head) {
     if (head == nullptr || head->next == nullptr)
         return head;
@@ -264,24 +178,10 @@ Node* LinkedList::mergeSort(Node* head) {
     return merge(left, right);
 }
 
-/*
-    Function to sort the linked list.
-    Input: none
-    Output: none
-    Time complexity: O(n log n)
-    Space complexity: O(log n)
-*/
 void LinkedList::sortLinkedList() {
     head = mergeSort(head);
 }
 
-/*
-    Function to perform binary search on the linked list.
-    Input: integer key to search for.
-    Output: true if key is found, false otherwise.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 bool LinkedList::binarySearch(int key) {
     Node* current = head;
     while (current != nullptr) {
@@ -292,13 +192,6 @@ bool LinkedList::binarySearch(int key) {
     return false;
 }
 
-/*
-    Function to get the nth node from the beginning of the linked list.
-    Input: integer index of the node.
-    Output: pointer to the nth node from the beginning.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 Node* LinkedList::getNthNode(int index) {
     if (index < 0)
         return nullptr;
@@ -314,13 +207,6 @@ Node* LinkedList::getNthNode(int index) {
     return nullptr; // Index out of bounds
 }
 
-/*
-    Function to get the nth node from the end of the linked list.
-    Input: integer n representing the distance from the end.
-    Output: pointer to the nth node from the end.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 Node* LinkedList::getNthFromEnd(int n) {
     if (n <= 0 || head == nullptr)
         return nullptr;
@@ -344,13 +230,6 @@ Node* LinkedList::getNthFromEnd(int n) {
     return slow;
 }
 
-/*
-    Function to rotate the linked list to the right by k steps.
-    Input: integer k representing the number of steps to rotate.
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 void LinkedList::rotate(int k) {
     if (head == nullptr || k <= 0)
         return;
@@ -381,13 +260,6 @@ void LinkedList::rotate(int k) {
     current->next = nullptr;
 }
 
-/*
-    Function to merge two sorted linked lists.
-    Input: heads of two sorted linked lists.
-    Output: head of the merged sorted linked list.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 Node* LinkedList::mergeSortedLists(Node* list1, Node* list2) {
     if (list1 == nullptr)
         return list2;
@@ -407,13 +279,6 @@ Node* LinkedList::mergeSortedLists(Node* list1, Node* list2) {
     return mergedList;
 }
 
-/*
-    Function to check if the linked list has a loop.
-    Input: none
-    Output: true if the linked list has a loop, false otherwise.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 bool LinkedList::hasLoop() {
     if (head == nullptr || head->next == nullptr)
         return false;
@@ -432,13 +297,6 @@ bool LinkedList::hasLoop() {
     return false; // No loop found
 }
 
-/*
-    Function to remove duplicates from the linked list.
-    Input: none
-    Output: none
-    Time complexity: O(n)
-    Space complexity: O(n)
-*/
 void LinkedList::removeDuplicates() {
     if (head == nullptr || head->next == nullptr)
         return; // No duplicates to remove for empty list or list with only one node
@@ -462,13 +320,6 @@ void LinkedList::removeDuplicates() {
     }
 }
 
-/*
-    Function to swap pairs of nodes in the linked list.
-    Input: head of the linked list.
-    Output: head of the linked list after swapping pairs.
-    Time complexity: O(n)
-    Space complexity: O(1)
-*/
 Node* LinkedList::swapPairs(Node* head) {
     if (head == nullptr || head->next == nullptr)
         return head; // No need to swap if the list has zero or one node
