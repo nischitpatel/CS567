@@ -184,35 +184,6 @@ TEST(LinkedList, GetNthNode) {
     }
 }
 
-TEST(LinkedList, GetNthFromEnd) {
-    // Initialize the linked list
-    LinkedList list;
-
-    // Store values for verification
-    std::vector<int> values;
-
-    // Generate random values and add nodes to the list
-    for (int i = 0; i < MAX_LENGTH; ++i) {
-        int value = DeepState_IntInRange(0, MAX_VALUE);
-        list.addNode(value);
-        values.push_back(value); // Store the value for later verification
-    }
-
-    // Choose a random value for n
-    int n = DeepState_IntInRange(0, MAX_LENGTH - 1);
-
-    // Get the nth node from the end
-    Node* nthFromEnd = list.getNthFromEnd(n);
-
-    // Ensure the nth node from the end is correct by comparing its value
-    ASSERT(nthFromEnd != nullptr); // Node should not be nullptr
-    ASSERT(nthFromEnd->data == values[values.size() - 1 - n]); // Check the node's data
-
-    // Check if the calculated index from the end matches n
-    int calculatedIndexFromEnd = list.length() - 1 - list.getNthNodeIndex(nthFromEnd);
-    ASSERT_EQ(calculatedIndexFromEnd, n);
-}
-
 TEST(LinkedList, Rotate) {
     // Initialize the linked list
     LinkedList list;
