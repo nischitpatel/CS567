@@ -21,7 +21,7 @@ public:
     Node* getTail();
     int length();
     void addNode(int value);
-    void deleteNode(int value);
+    void deleteNode(int value, Node* head);
     void reverseLinkedList();
     Node* findMiddleNode(Node* head);
     void deleteLinkedList();
@@ -31,7 +31,6 @@ public:
     void sortLinkedList();
     bool binarySearch(int key);
     Node* getNthNode(int index);
-    Node* getNthFromEnd(int n);
     void rotate(int k);
     Node* mergeSortedLists(Node* list1, Node* list2);
     bool hasLoop();
@@ -39,7 +38,6 @@ public:
     Node* swapPairs(Node* head);
     Node* rotateRight(Node* head, int k);
     int getNthNodeIndex(Node* nthnode);
-    int getIndexFromEnd(Node* nthFromEnd);
 };
 
 #endif // LINKEDLIST_H

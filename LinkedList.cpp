@@ -51,19 +51,6 @@ int LinkedList::getNthNodeIndex(Node* nthnode) {
     return -1;
 }
 
-int LinkedList::getIndexFromEnd(Node* nthFromEnd) {
-    Node* temp = head;
-    int index = 0;
-    while (temp != nullptr) {
-        if (temp == nthFromEnd) {
-            return index;
-        }
-        index++;
-        temp = temp->next;
-    }
-    return -1;
-}
-
 void LinkedList::addNode(int value) {
     Node* newNode = new Node(value);
     if (head == nullptr) {
@@ -77,7 +64,7 @@ void LinkedList::addNode(int value) {
     }
 }
 
-void LinkedList::deleteNode(int value) {
+void LinkedList::deleteNode(int value, Node* head) {
     if (head == nullptr)
         return;
 
@@ -205,29 +192,6 @@ Node* LinkedList::getNthNode(int index) {
         count++;
     }
     return nullptr; // Index out of bounds
-}
-
-Node* LinkedList::getNthFromEnd(int n) {
-    if (n <= 0 || head == nullptr)
-        return nullptr;
-
-    Node* fast = head;
-    Node* slow = head;
-
-    // Move fast pointer to the nth node from the beginning
-    for (int i = 0; i < n; ++i) {
-        if (fast == nullptr)
-            return nullptr; // n is greater than the size of the list
-        fast = fast->next;
-    }
-
-    // Move both pointers simultaneously until fast reaches the end
-    while (fast != nullptr) {
-        fast = fast->next;
-        slow = slow->next;
-    }
-
-    return slow;
 }
 
 void LinkedList::rotate(int k) {
