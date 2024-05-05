@@ -38,6 +38,8 @@ public:
     Node* swapPairs(Node* head);
     Node* rotateRight(Node* head, int k);
     int getNthNodeIndex(Node* nthnode);
+    int getSecondMax(Node* head);
+    int getSecondMin(Node* head);
 };
 
 #endif // LINKEDLIST_H

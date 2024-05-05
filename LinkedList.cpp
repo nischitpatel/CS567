@@ -273,3 +273,19 @@ Node* LinkedList::swapPairs(Node* head) {
 
     return head;
 }
+
+int LinkedList::getSecondMax(Node* head) {
+    if(head == nullptr) return -1;
+    if(head->next == nullptr) return head->data;
+    Node* temp = head;
+    while(temp->next->next != nullptr) 
+        temp = temp->next;
+    
+    return temp->data;
+}
+
+int LinkedList::getSecondMin(Node* head) {
+    if(head == nullptr) return -1;
+    if(head->next == nullptr) return head->data;
+    return head->next->data;
+}

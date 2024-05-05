@@ -333,56 +333,6 @@ TEST(LinkedList, Rotate) {
     ASSERT(list.getTail()!=nullptr);
 }
 
-// TEST(LinkedList, MergeSortedLists) {
-//     // Initialize the linked lists
-//     LinkedList list1;
-//     LinkedList list2;
-
-//     // Generate random values and add nodes to the lists
-//     for (int i = 0; i < MAX_LENGTH; ++i) {
-//         int value1 = DeepState_IntInRange(0, MAX_VALUE);
-//         int value2 = DeepState_IntInRange(0, MAX_VALUE);
-//         list1.addNode(value1);
-//         list2.addNode(value2);
-//     }
-
-//     // Sort the lists
-//     list1.sortLinkedList();
-//     list2.sortLinkedList();
-
-//     // Merge the sorted lists
-//     Node* mergedList = list1.mergeSortedLists(list1.getHead(), list2.getHead());
-
-//     // Check if the merged list is sorted
-//     Node* current = mergedList;
-//     while (current->next != nullptr) {
-//         ASSERT(current->data <= current->next->data);
-//         current = current->next;
-//     }
-// }
-
-// TEST(LinkedList, HasLoop) {
-//     // Initialize the linked list
-//     LinkedList list;
-
-//     // Generate random values and add nodes to the list
-//     for (int i = 0; i < MAX_LENGTH; ++i) {
-//         int value = DeepState_IntInRange(0, MAX_VALUE);
-//         list.addNode(value);
-//     }
-
-//     // Check if the list has a loop
-//     ASSERT_FALSE(list.hasLoop());
-
-//     // Create a loop in the list
-//     Node* tail = list.getTail();
-//     Node* middleNode = list.findMiddleNode(list.getHead());
-//     if (tail != nullptr && middleNode != nullptr) {
-//         tail->next = middleNode;
-//         ASSERT(list.hasLoop());
-//     }
-// }
-
 TEST(LinkedList, RemoveDuplicates) {
     // Initialize the linked list
     LinkedList list;
@@ -443,4 +393,32 @@ TEST(LinkedList, SwapPairs) {
 
     // Check if the swapped linked list satisfies the properties
     ASSERT(isSwappedCorrectly(swappedHead));
+}
+
+TEST(LinkedList, GetSecondMaxAndMin) {
+    // Initialize the linked list
+    LinkedList list;
+
+    // Add some nodes to the list
+    list.addNode(1);
+    list.addNode(2);
+    list.addNode(3);
+    list.addNode(4);
+    list.addNode(5);
+
+    int secondMax = list.getSecondMax(list.getHead());
+
+    ASSERT(secondMax == 4);
+
+    // Check if linked list is not updated
+    ASSERT(list.getHead()->data==1);
+    ASSERT(list.getTail()->data==5);
+
+    int secondMin = list.getSecondMin(list.getHead());
+
+    ASSERT(secondMin == 2);
+
+    // Check if linked list is not updated
+    ASSERT(list.getHead()->data==1);
+    ASSERT(list.getTail()->data==5);
 }

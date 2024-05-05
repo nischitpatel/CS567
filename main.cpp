@@ -83,6 +83,13 @@ int main() {
     list.swapPairs(list.getHead());
     list.printLinkedList();
 
+    // Test getSecondMax function
+    list.sortLinkedList();
+    std::cout << "Second max: " << list.getSecondMax(list.getHead()) << std::endl;
+
+    // Test getSecondMin function
+    std::cout << "Second min: " << list.getSecondMin(list.getHead()) << std::endl;
+
     // Pause before exiting
     std::cout << "\nPress any key to exit...";
     std::cin.get();
