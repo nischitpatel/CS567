@@ -443,7 +443,4 @@ TEST(LinkedList, SwapPairs) {
 
     // Check if the swapped linked list satisfies the properties
     ASSERT(isSwappedCorrectly(swappedHead));
-
-    // Clean up memory
-    list.deleteLinkedList();
 }
