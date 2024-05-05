@@ -56,26 +56,26 @@ int main() {
     list.printLinkedList();
 
     // Test mergeSortedLists function
-    LinkedList list1, list2;
-    list1.addNode(1);
-    list1.addNode(3);
-    list1.addNode(5);
-    list2.addNode(2);
-    list2.addNode(4);
-    list2.addNode(6);
-    std::cout << "Merged Sorted Lists: ";
-    Node* mergedList = list.mergeSortedLists(list1.getHead(), list2.getHead());
-    while (mergedList != nullptr) {
-        std::cout << mergedList->data << " ";
-        mergedList = mergedList->next;
-    }
-    std::cout << std::endl;
+    // LinkedList list1, list2;
+    // list1.addNode(1);
+    // list1.addNode(3);
+    // list1.addNode(5);
+    // list2.addNode(2);
+    // list2.addNode(4);
+    // list2.addNode(6);
+    // std::cout << "Merged Sorted Lists: ";
+    // Node* mergedList = list.mergeSortedLists(list1.getHead(), list2.getHead());
+    // while (mergedList != nullptr) {
+    //     std::cout << mergedList->data << " ";
+    //     mergedList = mergedList->next;
+    // }
+    // std::cout << std::endl;
 
     // Test hasLoop function
-    if (list.hasLoop())
-        std::cout << "The list has a loop." << std::endl;
-    else
-        std::cout << "The list does not have a loop." << std::endl;
+    // if (list.hasLoop())
+    //     std::cout << "The list has a loop." << std::endl;
+    // else
+    //     std::cout << "The list does not have a loop." << std::endl;
 
     // Test removeDuplicates function
     list.addNode(3);

@@ -224,42 +224,42 @@ void LinkedList::rotate(int k) {
     current->next = nullptr;
 }
 
-Node* LinkedList::mergeSortedLists(Node* list1, Node* list2) {
-    if (list1 == nullptr)
-        return list2;
-    if (list2 == nullptr)
-        return list1;
+// Node* LinkedList::mergeSortedLists(Node* list1, Node* list2) {
+//     if (list1 == nullptr)
+//         return list2;
+//     if (list2 == nullptr)
+//         return list1;
 
-    Node* mergedList = nullptr;
+//     Node* mergedList = nullptr;
     
-    if (list1->data <= list2->data) {
-        mergedList = list1;
-        mergedList->next = mergeSortedLists(list1->next, list2);
-    } else {
-        mergedList = list2;
-        mergedList->next = mergeSortedLists(list1, list2->next);
-    }
+//     if (list1->data <= list2->data) {
+//         mergedList = list1;
+//         mergedList->next = mergeSortedLists(list1->next, list2);
+//     } else {
+//         mergedList = list2;
+//         mergedList->next = mergeSortedLists(list1, list2->next);
+//     }
     
-    return mergedList;
-}
+//     return mergedList;
+// }
 
-bool LinkedList::hasLoop() {
-    if (head == nullptr || head->next == nullptr)
-        return false;
+// bool LinkedList::hasLoop() {
+//     if (head == nullptr || head->next == nullptr)
+//         return false;
 
-    Node* slow = head;
-    Node* fast = head->next; // Move fast pointer one step ahead initially
+//     Node* slow = head;
+//     Node* fast = head->next; // Move fast pointer one step ahead initially
 
-    while (fast != nullptr && fast->next != nullptr) {
-        if (slow == fast)
-            return true; // Loop detected
+//     while (fast != nullptr && fast->next != nullptr) {
+//         if (slow == fast)
+//             return true; // Loop detected
 
-        slow = slow->next;          // Move slow pointer one step
-        fast = fast->next->next;    // Move fast pointer two steps
-    }
+//         slow = slow->next;          // Move slow pointer one step
+//         fast = fast->next->next;    // Move fast pointer two steps
+//     }
 
-    return false; // No loop found
-}
+//     return false; // No loop found
+// }
 
 void LinkedList::removeDuplicates() {
     if (head == nullptr || head->next == nullptr)
