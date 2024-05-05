@@ -90,9 +90,9 @@ int main() {
     list.printLinkedList();
 
     // Test swapPairs function
-    std::cout << "List after swapping pairs: ";
-    list.swapPairs(list.getHead());
-    list.printLinkedList();
+    // std::cout << "List after swapping pairs: ";
+    // list.swapPairs(list.getHead());
+    // list.printLinkedList();
 
     // Pause before exiting
     std::cout << "\nPress any key to exit...";

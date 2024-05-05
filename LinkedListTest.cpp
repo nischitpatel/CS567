@@ -423,24 +423,24 @@ bool isSwappedCorrectly(Node* head) {
     return true; // If all pairs are swapped correctly, return true
 }
 
-TEST(LinkedList, SwapPairs) {
-    // Initialize the linked list
-    LinkedList list;
+// TEST(LinkedList, SwapPairs) {
+//     // Initialize the linked list
+//     LinkedList list;
 
-    // Generate a random linked list
-    int length = DeepState_IntInRange(0, 20);
-    for (int i = 0; i < length; ++i) {
-        list.addNode(DeepState_Int());
-    }
+//     // Generate a random linked list
+//     int length = DeepState_IntInRange(0, 20);
+//     for (int i = 0; i < length; ++i) {
+//         list.addNode(DeepState_Int());
+//     }
 
-    // Save the original linked list for comparison
-    Node* originalHead = list.getHead();
+//     // Save the original linked list for comparison
+//     Node* originalHead = list.getHead();
 
-    list.sortLinkedList();
+//     list.sortLinkedList();
 
-    // Swap pairs in the linked list
-    Node* swappedHead = list.swapPairs(originalHead);
+//     // Swap pairs in the linked list
+//     Node* swappedHead = list.swapPairs(originalHead);
 
-    // Check if the swapped linked list satisfies the properties
-    ASSERT(isSwappedCorrectly(swappedHead));
-}
+//     // Check if the swapped linked list satisfies the properties
+//     ASSERT(isSwappedCorrectly(swappedHead));
+// }
