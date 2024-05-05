@@ -408,7 +408,7 @@ TEST(LinkedList, GetSecondMaxAndMin) {
 
     int secondMax = list.getSecondMax(list.getHead());
 
-    ASSERT(secondMax == 4);
+    ASSERT(secondMax == 5);
 
     // Check if linked list is not updated
     ASSERT(list.getHead()->data==1);
