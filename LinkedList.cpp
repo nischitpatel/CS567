@@ -281,7 +281,7 @@ int LinkedList::getSecondMax(Node* head) {
     while(temp->next->next != nullptr) 
         temp = temp->next;
     
-    return temp->data;
+    return temp->next->data;
 }
 
 int LinkedList::getSecondMin(Node* head) {
