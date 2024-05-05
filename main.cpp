@@ -49,12 +49,6 @@ int main() {
     if (nthNode != nullptr)
         std::cout << "Node at index " << index << ": " << nthNode->data << std::endl;
 
-    // Test getNthFromEnd function
-    int n = 2;
-    Node* nthFromEnd = list.getNthFromEnd(n);
-    if (nthFromEnd != nullptr)
-        std::cout << "Node at " << n << " from end: " << nthFromEnd->data << std::endl;
-
     // Test rotate function
     int k = 2;
     std::cout << "List after rotating right by " << k << " places: ";
