@@ -284,29 +284,29 @@ void LinkedList::removeDuplicates() {
     }
 }
 
-// Node* LinkedList::swapPairs(Node* head) {
-//     if (head == nullptr || head->next == nullptr)
-//         return head; // No need to swap if the list has zero or one node
+Node* LinkedList::swapPairs(Node* head) {
+    if (head == nullptr || head->next == nullptr)
+        return head; // No need to swap if the list has zero or one node
 
-//     Node* dummy = new Node(0); // Dummy node to handle edge cases
-//     dummy->next = head;
-//     Node* prev = dummy;
+    Node* dummy = new Node(0); // Dummy node to handle edge cases
+    dummy->next = head;
+    Node* prev = dummy;
 
-//     while (prev->next != nullptr && prev->next->next != nullptr) {
-//         Node* first = prev->next;
-//         Node* second = prev->next->next;
+    while (prev->next != nullptr && prev->next->next != nullptr) {
+        Node* first = prev->next;
+        Node* second = prev->next->next;
 
-//         // Swapping nodes
-//         first->next = second->next;
-//         second->next = first;
-//         prev->next = second;
+        // Swapping nodes
+        first->next = second->next;
+        second->next = first;
+        prev->next = second;
 
-//         // Move to the next pair of nodes
-//         prev = first;
-//     }
+        // Move to the next pair of nodes
+        prev = first;
+    }
 
-//     head = dummy->next;
-//     delete dummy;
+    head = dummy->next;
+    delete dummy;
 
-//     return head;
-// }
+    return head;
+}
