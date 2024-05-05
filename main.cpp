@@ -16,6 +16,17 @@ int main() {
     std::cout << "Original List: ";
     list.printLinkedList();
 
+    // Test get head function
+    Node* h = list.getHead();
+    std::cout << "Head data : " << h->data << std::endl;
+
+    // Test get tail function
+    Node* t = list.getTail();
+    std::cout << "Tail data : " << t->data << std::endl;
+
+    // Test length function
+    std::cout << "Length of the linked list: " << list.length() << std::endl;
+
     // Test deleteNode function
     list.deleteNode(3, list.getHead());
     std::cout << "List after deleting node with value 3: ";
