@@ -67,7 +67,7 @@ int main() {
     std::cout << "List after removing duplicates: ";
     list.printLinkedList();
 
-    Test swapPairs function
+    // Test swapPairs function
     std::cout << "List after swapping pairs: ";
     list.swapPairs(list.getHead());
     list.printLinkedList();
